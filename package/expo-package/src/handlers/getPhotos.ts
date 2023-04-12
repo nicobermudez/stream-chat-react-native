@@ -1,4 +1,5 @@
 import * as MediaLibrary from 'expo-media-library';
+import { lookup } from "mime-types";
 
 export const getPhotos = async ({ after, first }: MediaLibrary.AssetsOptions) => {
   try {
@@ -18,7 +19,7 @@ export const getPhotos = async ({ after, first }: MediaLibrary.AssetsOptions) =>
       height: asset.height,
       id: asset.id,
       source: 'picker',
-      type: asset.mediaType,
+      type: lookup(asset.mediaType),
       uri: asset.uri,
       width: asset.width,
     }));
